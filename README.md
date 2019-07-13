@@ -1,5 +1,7 @@
 # Tap Weather Station's Outdoor Data using RTL_433 and stream data to MQTT broker
 
+Credit: RTL 433 by @merbanen (https://github.com/merbanan/rtl_433) 
+
 ## Attach the RTL-SDR dongle 
 First, find the RTL-SDR dongle usb bus address using lsusb,
 ```
