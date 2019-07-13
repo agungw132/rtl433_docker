@@ -2,7 +2,7 @@ FROM debian:latest
 MAINTAINER Agung Wahyudi <agung.wahyudi@gmail.com>
 
 RUN apt-get update
-RUN apt-get install -yq git libtool libusb-1.0.0-dev librtlsdr-dev rtl-sdr cmake automake python3 python3-pip
+RUN apt-get install -yq git libtool libusb-1.0.0-dev librtlsdr-dev rtl-sdr cmake automake
 RUN git clone https://github.com/merbanan/rtl_433.git
 
 COPY build.sh .
