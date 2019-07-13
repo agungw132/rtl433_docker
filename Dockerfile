@@ -2,7 +2,7 @@ FROM debian:latest
 MAINTAINER Agung Wahyudi <agung.wahyudi@gmail.com>
 
 RUN apt-get update
-RUN apt-get install -yq git libtool libusb-1.0.0-dev librtlsdr-dev rtl-sdr cmake automake
+RUN apt-get install -yq git libtool libusb-1.0.0-dev librtlsdr-dev rtl-sdr cmake automake mosquitto-clients
 RUN git clone https://github.com/merbanan/rtl_433.git
 
 COPY build.sh .
@@ -18,7 +18,5 @@ ARG MQTT_TOPIC
 ARG FREQUENCY
 ARG DEVICE
 
-RUN apt-get install -yq mosquitto-clients
-
-#ENTRYPOINT rtl_433 -f $FREQUENCY -R $DEVICE -F json | mosquitto_pub -h $MQTT_HOST -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PASSWORD -t $MQTT_TOPIC -l
+ENTRYPOINT rtl_433 -f $FREQUENCY -R $DEVICE -F json | mosquitto_pub -h $MQTT_HOST -p $MQTT_PORT -u $MQTT_USER -P $MQTT_PASSWORD -t $MQTT_TOPIC -l
 
